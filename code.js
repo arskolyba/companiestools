@@ -158,14 +158,14 @@ copyButton.onclick=() => {
 var likeButton=document.getElementById('likeButton')
 var likeButtonContainer=document.querySelectorAll('.like-button')[0]
 function disable(){likeButton.disabled=true}
-if(window.localStorage.getItem(item-id)=="true"){
+if(window.localStorage.getItem(itemID)=="true"){
 	likeButton.disabled=true
   likeButtonContainer.style.backgroundImage="url(https://uploads-ssl.webflow.com/62016cc9f65de938902f2f84/6307c7a3b782308a9ef0b53a_heart-filled.svg)"
 }
   likeButton.onclick=() => {
     likeButton.value=parseInt(likeButton.value) + 1
     likeButtonContainer.style.backgroundImage="url(https://uploads-ssl.webflow.com/62016cc9f65de938902f2f84/6307c7a3b782308a9ef0b53a_heart-filled.svg)"
-    window.localStorage.setItem(item-id, true);
+    window.localStorage.setItem(itemID, true);
     mixpanel.track('Product liked', {
       'Page name': name
     });
