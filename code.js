@@ -41,8 +41,10 @@ function setUsedBy(total, totalDisplay, visible, plusAmountLabel, plusContainerB
         totalDisplay.innerText=parsedTotal
         //show +X
         if(parsedTotal > visible.length){
+          if (plusContainerBlock != null){
             plusAmountLabel.innerText=parsedTotal - visible.length
             plusContainerBlock.style.display='flex';
+          }
         }
     }
     if(type=="all"){
@@ -62,6 +64,21 @@ function setUsedBy(total, totalDisplay, visible, plusAmountLabel, plusContainerB
             for (var i=0; i<embedAmount.length; i++){
             embedAmount[i].innerHTML=parsedTotal
             }
+        }
+        // show dummies for not logged in users
+        var dummies = document.getElementsByClassName('locked-container')
+        const maxDummies = 6
+        if (parsedTotal>3){
+          var dummiesAmount = parsedTotal - 3
+          for (var i=0;i<dummiesAmount;i++){
+            if (i<maxDummies){
+              dummies[i].style.display = "flex"
+            }
+            if (i==maxDummies){
+              document.getElementById('plus-container-guest').style.display = "flex"
+              document.getElementById('plus-amount-guest').innerText = parsedTotal-8
+            }
+          }
         }
     }
 }
@@ -236,5 +253,3 @@ if(document.querySelectorAll('.usedby-collection-item').length==0){
   eachOtherBlock.style.display="none"
   usedCat.style.display="none"
 }
-
-console.log('latest')
