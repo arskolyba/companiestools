@@ -188,7 +188,7 @@ var prodLink=document.getElementById('productURL').innerHTML
   document.getElementById('productURL').innerHTML=newURL
 }
 
-//most popular cat
+//most popular categories
 var allCats=document.querySelectorAll('.js-usedby-category');
 var textCategories=[]
 for (var i=0; i<allCats.length; i++){
