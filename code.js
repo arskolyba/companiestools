@@ -145,7 +145,7 @@ if(appsGrid.length==0){
 var tip=document.getElementById('copied-tip')
 copyButton.onclick=() => {
   if(embedLogoAmount.length > 2){
-  	navigator.clipboard.writeText('<iframe src="https://www.companies.tools/p/{{wf {&quot;path&quot;:&quot;slug&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}?embed" width="100%" allowtransparency="true" frameBorder="0" scrolling="no"></iframe>');
+  	navigator.clipboard.writeText('<iframe src="https://www.companies.tools/p/' + slug + '?embed" width="100%" allowtransparency="true" frameBorder="0" scrolling="no"></iframe>');
     tip.style.display="block"
     mixpanel.track('Widget code copied', {
       'Page name': document.title,
@@ -158,16 +158,16 @@ copyButton.onclick=() => {
 var likeButton=document.getElementById('likeButton')
 var likeButtonContainer=document.querySelectorAll('.like-button')[0]
 function disable(){likeButton.disabled=true}
-if(window.localStorage.getItem("{{wf {&quot;path&quot;:&quot;item-id&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}")=="true"){
+if(window.localStorage.getItem(item-id)=="true"){
 	likeButton.disabled=true
   likeButtonContainer.style.backgroundImage="url(https://uploads-ssl.webflow.com/62016cc9f65de938902f2f84/6307c7a3b782308a9ef0b53a_heart-filled.svg)"
 }
   likeButton.onclick=() => {
     likeButton.value=parseInt(likeButton.value) + 1
     likeButtonContainer.style.backgroundImage="url(https://uploads-ssl.webflow.com/62016cc9f65de938902f2f84/6307c7a3b782308a9ef0b53a_heart-filled.svg)"
-    window.localStorage.setItem("{{wf {&quot;path&quot;:&quot;item-id&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}", true);
+    window.localStorage.setItem(item-id, true);
     mixpanel.track('Product liked', {
-      'Page name': '{{wf {&quot;path&quot;:&quot;name&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}'
+      'Page name': name
     });
     setTimeout(disable,400);
   }
@@ -206,7 +206,7 @@ document.getElementById('most-popular-category').textContent=mode(textCategories
 var rankNames=document.querySelectorAll('.js-rank-productname')
 var rankLabel=document.getElementById('rank-label')
 for (var i=0; i<rankNames.length; i++){
-	if(rankNames[i].textContent=='{{wf {&quot;path&quot;:&quot;name&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}'){
+	if(rankNames[i].textContent==name){
   	var rankNumber=parseInt([i]) + 1
   	rankLabel.textContent="#" + rankNumber
   }
