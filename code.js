@@ -236,3 +236,5 @@ if(document.querySelectorAll('.usedby-collection-item').length==0){
   eachOtherBlock.style.display="none"
   usedCat.style.display="none"
 }
+
+console.log('latest')
